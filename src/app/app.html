@@ -1,20 +1,43 @@
-<h1>Simple counter APP</h1>
-<p>Counter : {{counter}}</p>
-<div>
-  <button (click)="handle('plus')">+</button>
-  <button (click)="handle('minus')">-</button>
-  <button (click)="handle('reset')">Reset</button>
-  <hr>
-  <input (input)="handleinput($event.target.value);" type="text" placeholder="enter the input message">
-  <br>
-  <p>message:{{message}}</p>
-  <br>
-  <input (input)="city=$event.target.value" type="text" placeholder="enter the city name">
-  <br>
-<p>city:{{city}}</p>
+<h1>Welcome to angular</h1>
+@if(isLoggedIn){
+  <h1>welcome back!</h1>
+}
+@else{
+  <h1>please login</h1>
+}
+<input (input) ="updateAge($event.target.value)" type="text" placeholder="please enter the age">
 <br>
-<input #userinput placeholder="Enter country">
-<button (click)="getCountry(userinput.value)">get Country</button>
-<br>
-<p>{{country}}</p>
-</div>
+@if(age>18){
+  <h3>adult</h3>
+}
+@else if(age<18 && age>0){
+  <h3>Minor</h3>
+}
+@switch(tab){
+  @case ('Home'){
+    <h3>Home Page</h3>
+  }
+  @case('about'){
+    <h3>about page</h3>
+  }
+  @case('contact'){
+    <h3>Contact Page</h3>
+  }
+  @default{
+    <h3>Page not found</h3>
+  }
+}
+  <button (click)="tab='Home'">Home</button>
+  <button (click) ="tab='about'">About</button>
+  <button (click)="tab='contact'">Contact</button>
+
+  @for(item of items;track $index;let i=$index){
+    <P>{{$index+1}} : item value:{{item}}</P>
+      <button (click)="removeItem(i)">Remove</button>
+
+  }
+  <br>
+@for(u of users; track $index)
+{
+  <p>{{$index+1}} : {{u.name}} -{{u.age}}</p>
+}

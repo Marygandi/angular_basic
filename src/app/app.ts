@@ -14,50 +14,24 @@ interface user{
 export class App {
 
   protected readonly title = signal('angular_basic');
-  count :number=0;
-  username:string="mary";
-  IsActive:boolean=true;
-  colors:string[]=["red","green","blue"];
-  values:number[]=[1,2,3,4];
-  mary :user={
-    name:"mary",
-    age:24
+  isLoggedIn :boolean=true;
+  age: number=20;
+  updateAge(newAge: string)
+  {
+    this.age=Number(newAge);
+    
   }
-
-  name="Angular Tutorial";
-  isAdmin=true;
-  getMessage(){
-    return "welcome to the portal";
+  tab:string="Home";
+  items:string[]=["angualr","HTML","React"];
+   users=[{name:'mary',age:21},{name:'sandhya',age:24}]
+   removeItem(index: number){
+    this.items.splice(index,1);
+   }
+   count=signal<number>(0);
+   name=signal<string>('john');
+   itemsarray=signal<string[]>(["A","B","C"]);
+   itemsobject=signal<{name:string,age:number}[]>([{name:'Mary',age:21},{name:'sandhya',age:21}]);
   }
-  counter:number=0
-  handleAdd(){
-        this.counter++;
-  }
-  handleMinus(){
-    this.counter--;
-  }
-  handleReset(){
-    this.counter=0;
-  }
-  handle(value :string){
-    if(value==='plus'){
-      this.counter++;
-    }else if(value==='minus'){
-      this.counter--;
-    }else if(value==='reset'){
-      this.counter=0;
-    }
-    }
-message:string="";
-handleinput(value: string){
-  this.message=value;
-}
-city:string="";
-country:string="";
-getCountry(value: string){
-  this.country=value;
-}
-
-  }
+  
   
 
