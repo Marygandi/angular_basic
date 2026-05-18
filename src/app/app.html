@@ -1,43 +1,14 @@
-<h1>Welcome to angular</h1>
-@if(isLoggedIn){
-  <h1>welcome back!</h1>
-}
-@else{
-  <h1>please login</h1>
-}
-<input (input) ="updateAge($event.target.value)" type="text" placeholder="please enter the age">
-<br>
-@if(age>18){
-  <h3>adult</h3>
-}
-@else if(age<18 && age>0){
-  <h3>Minor</h3>
-}
-@switch(tab){
-  @case ('Home'){
-    <h3>Home Page</h3>
-  }
-  @case('about'){
-    <h3>about page</h3>
-  }
-  @case('contact'){
-    <h3>Contact Page</h3>
-  }
-  @default{
-    <h3>Page not found</h3>
-  }
-}
-  <button (click)="tab='Home'">Home</button>
-  <button (click) ="tab='about'">About</button>
-  <button (click)="tab='contact'">Contact</button>
+<h1>computed signals</h1>
+<p>Genral signal coiunt:{{count()}}</p><br>
+<button (click)="increment()">Increment</button>
+<p>computed signla count:{{doublecount()}}</p><br>
+<p>computed signla count:{{triplecount()}}</p><br>
+<p>Name: {{name()| uppercase}}</p>
+<p>Age: {{age()| percent}}</p>
+<p>Salary: {{amount| currency:'INR'}}</p>
+<p>Name: {{data()| json}}</p>
+<p>date: {{date()| date}}</p>
 
-  @for(item of items;track $index;let i=$index){
-    <P>{{$index+1}} : item value:{{item}}</P>
-      <button (click)="removeItem(i)">Remove</button>
 
-  }
-  <br>
-@for(u of users; track $index)
-{
-  <p>{{$index+1}} : {{u.name}} -{{u.age}}</p>
-}
+
+

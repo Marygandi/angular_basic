@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, computed, effect, signal, } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 interface user{
   name: string,
@@ -7,30 +8,30 @@ interface user{
 }
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
 
   protected readonly title = signal('angular_basic');
-  isLoggedIn :boolean=true;
-  age: number=20;
-  updateAge(newAge: string)
-  {
-    this.age=Number(newAge);
-    
-  }
-  tab:string="Home";
-  items:string[]=["angualr","HTML","React"];
-   users=[{name:'mary',age:21},{name:'sandhya',age:24}]
-   removeItem(index: number){
-    this.items.splice(index,1);
-   }
-   count=signal<number>(0);
-   name=signal<string>('john');
-   itemsarray=signal<string[]>(["A","B","C"]);
-   itemsobject=signal<{name:string,age:number}[]>([{name:'Mary',age:21},{name:'sandhya',age:21}]);
+count=signal<number>(0);
+doublecount=computed(()=>this.count()*2);
+triplecount=computed(()=>this.count()*3);
+increment(){
+  this.count.update((c)=>c+1);
+}
+constructor(){
+  effect(()=>{
+    console.log(this.count)
+  })
+}
+name=signal<string>('Mary');
+age=signal<number>(0.2);
+date=signal<Date>(new Date());
+amount=2000;
+data=signal<user>({name:'Mary',age:20});
+
   }
   
   
