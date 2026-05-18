@@ -1,14 +1,6 @@
-<h1>computed signals</h1>
-<p>Genral signal coiunt:{{count()}}</p><br>
-<button (click)="increment()">Increment</button>
-<p>computed signla count:{{doublecount()}}</p><br>
-<p>computed signla count:{{triplecount()}}</p><br>
-<p>Name: {{name()| uppercase}}</p>
-<p>Age: {{age()| percent}}</p>
-<p>Salary: {{amount| currency:'INR'}}</p>
-<p>Name: {{data()| json}}</p>
-<p>date: {{date()| date}}</p>
-
-
-
-
+<h1>Custom Pipes</h1>
+<p>{{fullName()|shortName}}</p>
+<input [(ngModel)]="username" (input)="formatname(username)" placeholder="enter the username"><br>
+<p>{{username}}</p>
+<input [value]="Emailid() " (input)="formatmail($event)" placeholder="enter emailid"><br>
+<p>{{Emailid()}}</p>
