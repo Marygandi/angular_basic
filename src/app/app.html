@@ -1,24 +1,7 @@
-<h1>parent to child communication</h1>
-<app-child [name]="username()" (namechange)="userid.set($event)"></app-child>
-<!-- template driven form -->
- <form #f="ngForm" (ngSubmit)="submit(f)">
-    <input type="text" ngModel placeholder="Enter your name">
-    <br><br>
-    <input type="text" ngModel placeholder="enter your emailid">
-    <br><br>
-<button type="submit">Submit templteform</button>
- </form>
- <!-- reactive form -->
-<h1>reactive form</h1>  
-<form [formGroup]="form" (ngSubmit)="submitReactive()">
-    
-<input type="text" formControlName="Name" placeholder="Enter your name">
- <br>
-<input type="text" formControlName="Email" placeholder="enter your email">
- <br>
-<button type="submit">submit reactive form</button>
-</form>
-<!-- Signalform -->
- <input type="text" [value]="employeename()" (input)="employeename.set($any($event.target.value))" placeholder="enter employeename"><br>
- <input type="text" [value]="employeemail()" (input)="employeemail.set($any($event.target.value))" placeholder="enter employee mail"><br>
- <button  (click)="submitSignalForm()">submit Singaml form</button>
+<h1>Routing</h1>
+<nav>
+    <a routerLink="/home">Home</a><br>
+    <a routerLink="/about">About</a><br>
+    <a routerLink="/contact">Contact</a>
+</nav>
+<router-outlet> </router-outlet>
